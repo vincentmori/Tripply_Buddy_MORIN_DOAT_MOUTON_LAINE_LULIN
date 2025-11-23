@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-/* Titres */
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
 .title-script {
     font-family: 'Pinyon Script', cursive;
     font-size: 64px;
@@ -17,23 +20,9 @@
     margin-bottom: 10px;
 }
 
-/* Header */
-#custom-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 28px;
-    background-color: #f9f4ef;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    position: sticky;
-}
-
-#logo {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 36px;
-    color: #000000;
-}
+/* ========================================
+   LOGO
+   ======================================== */
 
 #logo-page {
     font-family: 'Pinyon Script', cursive;
@@ -41,103 +30,32 @@
     color: #FFFFFF; 
 }
 
-/* --- STYLES CORRIGÉS POUR LE HEADER STABLE --- */
+/* ========================================
+   BUTTONS
+   ======================================== */
 
-/* 1. Wrapper Fixe/Sticky (Contrôle le Fond, la Position et la Largeur) */
-#fixed-header-wrapper {
-    background-color: #f9f4ef;
-    position: sticky;
-    top: 0;
-    width: 100%; /* Important pour le sticky */
-    z-index: 1000;
-    padding: 14px 28px;
-    border-radius: 12px;
-}
-
-/* 2. Conteneur Interne (Pour l'alignement Logo vs Menu) */
-.header-content {
-    display: flex;
-    justify-content: space-between; /* Met le logo à gauche, le menu à droite */
-    align-items: center;
-}
-
-/* 3. Style du Menu (Les liens) */
-.header-menu {
-    display: flex; /* Aligne Accueil et À propos */
-    gap: 22px;
-    align-items: center;
-}
-
-/* 4. Correction de la Couleur et Retrait du Soulignement */
-.header-menu a {
-    /* REMPLACER PAR CECI POUR RETIRER LE BLEU PAR DÉFAUT */
-    text-decoration: none !important; /* Retire le soulignement */
-    color: #000000 !important; /* Force la couleur Noire */
-    /* ------------------------------------------------ */
-    font-weight: 500;
-    font-size: 16px;
-}
-
-.header-menu a:hover {
-    color: #555555 !important;
-}
-
-
-/* 5. Positionnement du Bouton Streamlit "Connexion" (Le plus difficile) */
-/* Cible l'élément Streamlit qui contient votre bouton */
-div[data-testid="stButton"][key="header_login_trigger"] {
-    /* Positionne le bouton pour qu'il s'aligne avec le menu (nécessite un ajustement fin) */
-    position: absolute; 
-    top: 14px; /* Alignement vertical */
-    right: 50px; /* Alignement horizontal */
-    z-index: 1001; 
-}
-
-div[data-testid="stButton"][key="header_login_trigger"] button {
-    /* Style du bouton pour qu'il ressemble à un lien noir */
-    background-color: transparent !important;
-    color: #000000 !important;
+button, .stButton > button {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    padding: 10px 18px !important;
+    border-radius: 10px !important;
     border: none !important;
-    padding: 0;
-    font-size: 16px; 
-    font-weight: 500;
+    font-weight: 600 !important;
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* Footer */
+button:hover, .stButton > button:hover {
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
 .footer-text {
     text-align: center;
     opacity: 0.7;
     padding: 20px;
     font-size: 14px;
-}
-
-/* Boutons */
-button, .stButton>button {
-    background-color: #000000 !important;
-    color: white !important;
-    padding: 10px 18px !important;
-    border-radius: 10px !important;
-    border: none !important;
-    font-weight: 600 !important;
-    transition: 0.2s ease-in-out;
-}
-
-button:hover, .stButton>button:hover {
-    background-color: #333333 !important;
-    color: white !important;
-}
-
-/* BOUTON POUR CONNEXION */
-.header-link-button .stButton > button {
-    background-color: transparent !important;
-    color: #000000 !important; /* Texte noir sur fond header clair */
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0;
-    margin-left: 22px; /* Pour correspondre à l'espacement des liens */
-    font-size: 16px; 
-    font-weight: 500;
-}
-.header-link-button .stButton > button:hover {
-    color: #555555 !important;
 }

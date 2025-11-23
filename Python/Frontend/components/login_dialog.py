@@ -10,8 +10,7 @@ def login_dialog():
         if not username.strip() or not password.strip():
             st.error("Veuillez saisir vos identifiants.")
         else:
-            # Succès et fermeture
-            st.session_state.logged_in = True
-            st.session_state.username = username.strip()
+            st.session_state['STATUT_CONNEXION'] = True 
+            st.session_state['username'] = username.strip() 
             st.success("Connexion réussie! Redémarrage de la page...")
             st.rerun()
