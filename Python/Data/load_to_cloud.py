@@ -1,13 +1,16 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
+from dotenv import load_dotenv
 import csv
 import os
 '''
 # --- Configuration de la connexion CLOUD ---
 # Utilisez la chaîne de connexion Heroku mise à jour avec le dialecte psycopg2
-DB_CONNECTION_STRING = "postgresql+psycopg2://ucbkaif701fjf1:p82d260bcd738f493c3bec4bce418296879d7b558a0528685cfcad52a4632d69a@cet8gijgk7sjl9.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d2i3gudil1qocc" 
+load_dotenv() 
 
+
+DB_CONNECTION_STRING = os.environ.get("DATABASE_URL")
 # --- Nouveaux fichiers et noms de tables ---
 TABLE_FILES = {
     "users_generated": "users_generated.csv",

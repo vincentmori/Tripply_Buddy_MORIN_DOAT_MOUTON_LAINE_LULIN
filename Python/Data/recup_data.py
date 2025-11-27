@@ -1,14 +1,18 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 from typing import Optional
 
 # *************************************************************************
 # CLÉ DE CONNEXION HEROKU (DATABASE_URL)
 # Cette chaîne permet la connexion à votre base de données cloud PostgreSQL
 # *************************************************************************
-DB_CONNECTION_STRING = "postgresql+psycopg2://ucbkaif701fjf1:p82d260bcd738f493c3bec4bce418296879d7b558a0528685cfcad52a4632d69a@cet8gijgk7sjl9.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d2i3gudil1qocc" 
+load_dotenv() 
 
-# --- Fonction Générique de Connexion et d'Extraction ---
+
+DB_CONNECTION_STRING = os.environ.get("DATABASE_URL")
+
 def _execute_query_and_get_df(sql_query: str, table_name: str) -> pd.DataFrame:
     """
     Se connecte à la base de données PostgreSQL Cloud, exécute une requête SQL,
