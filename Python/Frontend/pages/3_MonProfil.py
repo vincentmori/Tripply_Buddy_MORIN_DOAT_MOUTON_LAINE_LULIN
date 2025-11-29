@@ -35,11 +35,9 @@ def content_compte_connecte():
         st.title("Mon compte")
 
     with col_button:
-        # Ajout d'espace vertical pour aligner le bouton avec le titre
         st.write("") 
         st.write("") 
         
-        # 2. Le bouton "Se déconnecter"
         if st.button("Se déconnecter", key="logout_compte", use_container_width=True):
             # 3. Appel de la fonction de déconnexion
             logout_user()

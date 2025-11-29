@@ -1,6 +1,5 @@
 import streamlit as st
 import os 
-import sys
 from Python.Backend.ini import init_user
 
 def check_connexion(user_id, mdp):
@@ -34,7 +33,6 @@ def auto_login():
         try:
             with open(SESSION_FILE, "r") as f:
                 content = f.read().strip()
-                print(content)
             
             if content and '|' in content:
                 saved_user_id, saved_password = content.split('|')
