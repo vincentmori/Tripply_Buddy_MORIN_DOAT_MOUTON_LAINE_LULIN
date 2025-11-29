@@ -13,16 +13,15 @@ from data_loader import load_and_process_data, build_graph
 # ==========================================
 # HYPERPARAMÈTRES (MLE-Ops Responsibility)
 # ==========================================
-CSV_FILE = 'Travel_details_ready.csv'
 HIDDEN_CHANNELS = 128
 OUT_CHANNELS = 32
-LEARNING_RATE = 0.0001
-EPOCHS = 1000
+LEARNING_RATE = 0.0004
+EPOCHS = 2000
 BETA = 0.001
 ARTIFACTS_DIR = "artifacts"
 
 # Seuil de tolérance pour l'arrêt (Delta)
-EARLY_STOPPING_DELTA = 0.01  # Si val_loss > min_val_loss + 0.3, on arrête
+EARLY_STOPPING_DELTA = 0.01  # Si val_loss > min_val_loss + 0.01, on arrête
 
 
 def train_one_epoch(model, train_data, optimizer):
@@ -69,12 +68,7 @@ def main():
     if not os.path.exists(ARTIFACTS_DIR):
         os.makedirs(ARTIFACTS_DIR)
 
-    # 2. Chargement des données
-    if not os.path.exists(CSV_FILE):
-        print(f"ERREUR: Fichier {CSV_FILE} introuvable.")
-        return
-
-    df, mappings = load_and_process_data(CSV_FILE)
+    df, mappings = load_and_process_data()
     data = build_graph(df)
 
     # 3. Split Train/Val/Test
