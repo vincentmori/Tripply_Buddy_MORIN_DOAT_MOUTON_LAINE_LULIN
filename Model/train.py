@@ -65,6 +65,8 @@ def compute_ndcg_for_split(model, train_data, val_data, k=10):
     """Compute mean NDCG@k using embeddings trained on train_data and evaluation on val_data.
 
     Excludes train edges from ranking candidate lists.
+    
+    Note: After RandomLinkSplit, validation edges are in edge_label_index (not edge_index).
     """
     model.eval()
     # Encode on train_data (avoid leakage)
@@ -79,29 +81,36 @@ def compute_ndcg_for_split(model, train_data, val_data, k=10):
     z_dest = mu['destination'].cpu().numpy()
     num_dests = z_dest.shape[0]
 
-    # Build train edge set for masking
+    # Build train edge set for masking (use edge_index for message-passing edges)
     ei_train = train_data['user', 'visits', 'destination'].edge_index
     src_train = ei_train[0].cpu().numpy()
     dst_train = ei_train[1].cpu().numpy()
     train_edges = set(zip(src_train.tolist(), dst_train.tolist()))
 
-    # get validation edges (positive only)
-    ei_val = val_data['user', 'visits', 'destination'].edge_index
+    # Get validation edges - use edge_label_index (edges to predict), not edge_index
+    # After RandomLinkSplit, edge_label_index contains the edges we need to evaluate
+    ei_val = val_data['user', 'visits', 'destination'].edge_label_index
     labels = val_data['user', 'visits', 'destination'].edge_label
     src_val = ei_val[0].cpu().numpy()
     dst_val = ei_val[1].cpu().numpy()
     labels_np = labels.cpu().numpy()
-    # Collect positive val edges per user
+    
+    # Collect positive val edges per user (label == 1 means positive edge)
     val_per_user = {}
     for u, d, lab in zip(src_val.tolist(), dst_val.tolist(), labels_np.tolist()):
         if lab == 1:
             val_per_user.setdefault(u, set()).add(d)
 
+    if len(val_per_user) == 0:
+        return 0.0
+
     ndcgs = []
     for uid, test_set in val_per_user.items():
-        # compute scores
+        if uid >= len(z_user):
+            continue
+        # compute scores (dot product between user and all destinations)
         scores = z_user[uid].dot(z_dest.T)
-        # mask train visited
+        # mask train visited destinations
         mask = np.zeros(num_dests, dtype=bool)
         for dest in range(num_dests):
             if (uid, dest) in train_edges:
