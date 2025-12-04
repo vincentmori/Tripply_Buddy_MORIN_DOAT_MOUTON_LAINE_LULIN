@@ -15,7 +15,7 @@ load_css()
 
 with st.spinner("⏳ Auto Connection..."):
     if auto_login():
-        st.success(f"Connexion Succeeded! Traveler name: {st.session_state['user']['traveler_name'].loc[0]}")
+        st.success(f"Connection Succeeded! Traveler name: {st.session_state['user']['traveler_name'].loc[0]}")
         sleep(0.5)
 
 # Redirection vers la page Accueil

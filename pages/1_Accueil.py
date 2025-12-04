@@ -16,7 +16,7 @@ display_header()
 # CONTENT
 # -------------------------------
 def content_accueil():
-    st.title("Accueil")
+    st.title("Home")
     
     st.header("Our destinations")
     

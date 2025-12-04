@@ -145,13 +145,35 @@ DATABASE_URL="postgresql+psycopg2://ucbkaif701fjf1:pef019c3014489fb0d4b482b664a2
 
 ### D. Launching the Streamlit Application
 To start the Streamlit user interface:
-streamlit run Python/Frontend/app.py
 
-## 6. Project Structure
-The Data directory contains the dataset.
+streamlit run app.py
 
-The Backend directory includes all scripts related to model processing, the data pipeline, and database operations. 
+## 6. Project Structure 📁
+The project is organized around several key directories, each having a specific role in the data pipeline and the Streamlit application.
 
-The Frontend directory includes the Streamlit application and its interface logic. 
+#### Directories
+- Data : This directory contains the initial dataset, and a txt for the remember me logic.
 
-The requirements file contains the dependencies necessary for running the project.
+- Backend : This groups the scripts that manage database operations (selection and insertion functions) as well as the streamlit's initialization functions.
+
+- Model : This folder is specifically dedicated to all modeling logic, including model-specific data processing, training, and prediction scripts.
+
+- Frontend : This directory hosts the Streamlit interface logic. It is structured into two sub-directories:
+
+    - components : Contains the reusable interface elements (e.g., header, interactions).
+
+    - style : Contains the CSS stylesheet (styles.css) for the application's visual customization.
+
+- pages : Contains the Python files that represent each of the Streamlit application pages.
+
+- Notebooks : This folder contains example notebooks used for data exploration, allowing developers to test data retrieval functions and visualize the structure of the resulting datasets.
+
+- Artifacts : It stores the model artifacts, such as encoding mappings, scaling objects, or other configuration files necessary for the application.
+
+- Rendus : This folder archives the final documents and deliverables of the project.
+
+#### Root Files
+- app.py : This is the main entry point used to launch the Streamlit application.
+
+- requirements.txt : This file lists all the essential Python dependencies required for the project's execution.
+  

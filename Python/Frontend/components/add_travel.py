@@ -8,8 +8,9 @@ from Model.predict import reset_predictor
 from time import sleep
 from Python.Backend.write import update_travel_table
 
-SESSION_FILE = os.path.join("Data", "rester_connecter.txt")
-
+# ---------------------------------
+# DIALOGUE POUR AJOUTER UN VOYAGE
+# ---------------------------------
 @st.dialog("Add Travel", width='large')
 def add_travel():
     # --- Récupération des données de session ---
@@ -20,7 +21,7 @@ def add_travel():
     df_dest = st.session_state['df_destinations']
     
     # Extraction des infos utilisateur (pour éviter les erreurs d'alignement Pandas)
-    # On utilise .iloc[0] ou .item() car 'user_df' est un DataFrame d'une seule ligne
+    # On utilise .iloc[0] car 'user_df' est un DataFrame d'une seule ligne
     user_id = user_df["traveler_user_id"].iloc[0]
     user_name = user_df["traveler_name"].iloc[0]
     user_age = user_df["traveler_age"].iloc[0]
@@ -92,7 +93,7 @@ def add_travel():
         total_cost = st.number_input(
             "Total cost (€)", 
             min_value=acc_cost, # Le coût total doit être au moins égal au coût d'hébergement
-            value=default_total_cost + 50.0, # Suggestion d'un coût total supérieur
+            value=default_total_cost + 500.0, # Suggestion d'un coût total supérieur
             help="Coût total du voyage (hébergement + autres dépenses)."
         )
         

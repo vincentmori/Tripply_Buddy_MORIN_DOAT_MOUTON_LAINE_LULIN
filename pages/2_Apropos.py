@@ -20,7 +20,7 @@ def content_Apropos():
     st.title("About the Project 🎓")
 
     st.markdown(f"""
-    Welcome to {logo_html_inline}! This project was developed as part of a **student initiative** focused on **personalized recommendation systems** within the travel industry.
+    Welcome to {logo_html_inline}! This project was developed as part of a **student project** focused on **personalized recommendation systems** within the travel industry.
     """, unsafe_allow_html=True) 
 
     st.markdown('<div class="section-title">Objective</div>', unsafe_allow_html=True)

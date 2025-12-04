@@ -1,6 +1,9 @@
 import streamlit as st
 from Python.Frontend.components.card import get_all_cards_html, get_all_cards_histo_html
 
+# -------------------------------------------------------------------------
+# FONCTION POUR AFFICHAGE DES CARDES CONTENU DANS UN CONTAINER SCROLLABLE
+# -------------------------------------------------------------------------
 def affichage_card(df, histo=False):  
     if not histo:  
         cards_html = get_all_cards_html(df)

@@ -3,6 +3,9 @@ import unicodedata
 import re 
 import pandas as pd 
 
+# ------------------------------
+# ENLEVE LES ACCENTS DES VILLES
+# ------------------------------
 def remove_accents(text):
     """
     remove accents for cities such as Malé.
@@ -13,6 +16,10 @@ def remove_accents(text):
     
     return cleaned_text
 
+# --------------------------------------------------------
+# CREATION D'UNE CARTE POUR UNE VILLE
+# AFFICHAGE DES DATES SI C'EST UNE CARTE PREVIOUS TRAVELS
+# --------------------------------------------------------
 def get_city_card_html(city, Start_date=None, End_date=None, Histo=False):
     df_destinations = st.session_state["df_destinations"]
     
@@ -28,20 +35,35 @@ def get_city_card_html(city, Start_date=None, End_date=None, Histo=False):
     
     date_display = f"From {Start_date} to {End_date}" if Histo else ""
     
-    card_html = f"""
-    <div class="destination-card-v2">
-        <img src="{image_url}" class="card-v2-image" alt="{city}, {country}">
-        <div class="card-v2-info">
-            <p class="card-v2-city-country">
-                {city}, {country}
-            </p>
-            {f'<p style="color: black;">{date_display}</p>' if Histo else ''}<p>
+    if not Histo: 
+        card_html = f"""
+        <div class="destination-card-v2">
+            <img src="{image_url}" class="card-v2-image" alt="{city}, {country}">
+            <div class="card-v2-info">
+                <p class="card-v2-city-country">
+                    {city}, {country}
+                </p>
+            </div>
         </div>
-    </div>
-    """
+        """
+    else: 
+        card_html = f"""
+        <div class="destination-card-v2">
+            <img src="{image_url}" class="card-v2-image" alt="{city}, {country}">
+            <div class="card-v2-info">
+                <p class="card-v2-city-country">
+                    {city}, {country}
+                </p>
+                {f'<p style="color: black;">{date_display}</p>' if Histo else ''}<p>
+            </div>
+        </div>
+        """
     
     return card_html
     
+# ------------------------------------------
+# RECUPERE TOUTES LES CARTES D'UN DATAFRAME
+# ------------------------------------------
 def get_all_cards_html(df):
     all_cards_html = []
     
@@ -52,6 +74,9 @@ def get_all_cards_html(df):
         
     return "".join(all_cards_html)
 
+# -----------------------------------------------------
+# RECUPERE TOUTES LES CARTES HISTORIQUE Du DATAFRAME
+# -----------------------------------------------------
 def get_all_cards_histo_html(df):
     all_cards_html = []
     

@@ -34,7 +34,6 @@ def mise_en_forme_df(data, Start_date=None, End_date=None):
         # 2. split ',' pour avoir la ville puis le pays
         parts = item.split(",")
 
-        # Assurez-vous d'avoir au moins deux parties (Ville et Pays)
         if len(parts) == 2:
             city = parts[0].strip()
             country = parts[1].strip()
@@ -95,7 +94,6 @@ def content_compte_connecte():
             st.write("") 
             
             if st.button("Add travel", key="add_travel", use_container_width=True):
-                # 3. Appel de la fonction de déconnexion
                 add_travel()
                 
         df_histo_user = st.session_state["historique_user"]
@@ -116,7 +114,7 @@ def content_compte_connecte():
             
 
 def content_compte():
-    st.title("Mon Compte")
+    st.title("My Account")
 
 if st.session_state["STATUT_CONNEXION"]:
     content_compte_connecte()

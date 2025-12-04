@@ -1,10 +1,16 @@
 import streamlit as st
 
+# -----------------------
+# FONCTION DE NAVIGATION
+# -----------------------
 def navigate_to(page_name):
     """Fonction pour changer de page tout en conservant l'état de la session."""
     st.switch_page(f"pages/{page_name}.py")
 
 
+# ------------------------------------------------------
+# HEADER AVEC LES BOUTONS DE NAVIGATION ENTRE LES PAGES
+# ------------------------------------------------------
 def display_header():
     header_container = st.container()
     

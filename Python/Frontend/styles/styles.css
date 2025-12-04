@@ -4,7 +4,6 @@
 /* ========================================
    TYPOGRAPHY
    ======================================== */
-
 .title-script {
     font-family: 'Pinyon Script', cursive;
     font-size: 64px;
@@ -23,7 +22,6 @@
 /* ========================================
    LOGO
    ======================================== */
-
 #logo-page {
     font-family: 'Pinyon Script', cursive;
     font-size: 50px;
@@ -117,10 +115,9 @@
 /* ========================================
    BUTTONS
    ======================================== */
-
 button, .stButton > button {
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
+    background-color: #f4f9EF !important;
+    color: #333333 !important;
     padding: 10px 18px !important;
     border-radius: 10px !important;
     border: none !important;
@@ -129,14 +126,13 @@ button, .stButton > button {
 }
 
 button:hover, .stButton > button:hover {
-    background-color: #333333 !important;
-    color: #FFFFFF !important;
+    background-color: #f4f9EF !important;
+    color: #333333 !important;
 }
 
 /* ========================================
    FOOTER
    ======================================== */
-
 .footer-text {
     text-align: center;
     opacity: 0.7;

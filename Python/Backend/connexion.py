@@ -2,6 +2,9 @@ import streamlit as st
 import os 
 from Python.Backend.ini import init_user
 
+# ----------------------------------
+# CHECK LA VALIDATION DE CONNEXION
+# ----------------------------------
 def check_connexion(user_id, mdp):
     if 'df_connexion_users' in st.session_state:
         df_connexion_users = st.session_state["df_connexion_users"]
@@ -21,6 +24,9 @@ def check_connexion(user_id, mdp):
         
     return check, erreur
 
+# ---------------------------------
+# AUTO LOGIN SI REMEMBER ME ACTIVE
+# ---------------------------------
 def auto_login():
     """If user already connected."""
     if st.session_state['STATUT_CONNEXION']:

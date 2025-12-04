@@ -1,5 +1,9 @@
 import streamlit as st
 
+# ---------------------------
+# PETIT FOOTER POUR LE SITE
+# ---------------------------
+
 def display_footer():
     st.markdown("""
     <div class="footer-text">

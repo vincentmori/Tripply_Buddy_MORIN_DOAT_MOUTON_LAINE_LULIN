@@ -9,6 +9,9 @@ from Model.predict import reset_predictor
 
 SESSION_FILE = os.path.join("Data", "rester_connecter.txt")
 
+# ---------------------------
+# DIALOGUE POUR CREER UN COMPTE
+# ---------------------------
 @st.dialog("Register", width='large')
 def register_dialog():
     df_user = st.session_state['df_users']
@@ -118,7 +121,7 @@ def register_dialog():
                     ajout_bdd = update_users_table(st.session_state["df_users"])
                 
                 if ajout_bdd:
-                    st.success("Account added with sucess to the database")
+                    st.success("Account added with sucess to the database!")
                     
                 sleep(0.5)
                 
@@ -128,10 +131,10 @@ def register_dialog():
                     st.error(message_erreur)
                 else:    
                     reset_predictor()
-                    with st.spinner("⏳ Loading data et computing your recommandations..."):
+                    with st.spinner("⏳ Loading data and computing your recommandations..."):
                         init_user(new_user_id) 
                 
-                    st.success("🎉 Connexion Succeeded ! Your recommandations are ready!.")
+                    st.success("🎉 Connection Succeeded ! Your recommandations are ready!")
                     
                     if remember_me:
                         try:
