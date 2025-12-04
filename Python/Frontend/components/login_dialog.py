@@ -17,7 +17,7 @@ def login_dialog():
     
     col1, _, col2 = st.columns([2, 3, 2])
     with col2:
-        remember_me = st.checkbox("Stay login")
+        remember_me = False
 
     with col1:
         if st.button("Register", key="to_register_btn"):

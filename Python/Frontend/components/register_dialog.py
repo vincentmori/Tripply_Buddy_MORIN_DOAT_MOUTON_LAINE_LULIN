@@ -77,7 +77,7 @@ def register_dialog():
     
     new_transport = ";".join(list_new_transport)
         
-    """Password and remember me"""
+    """Password and user ID"""
     col_user_id, col_password = st.columns(2)
     
     with col_password:
@@ -89,7 +89,7 @@ def register_dialog():
     """Connect button"""
     button, _, col_remember_me = st.columns([3, 7, 2])
     with col_remember_me:
-        remember_me = st.checkbox("Stay login")
+        remember_me = False
         
     with button:
         if st.button("Register and login", key="create_account_btn"):
